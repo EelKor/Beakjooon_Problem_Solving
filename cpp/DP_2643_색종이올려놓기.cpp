@@ -19,11 +19,16 @@ int main()
     int n;
     int a,b;
     int max = 0;
-    int before;
     int count = 0;
-
+    bool isOverlap[101];
     vector<pair<int,int>> v;
 
+    // 배열 초기화  
+    for (int i = 0; i < 101; i++)
+    {
+        isOverlap[i] = false;
+    }
+    
     cin >> n;
     for (int i = 0; i < n; i++)
     {
@@ -32,47 +37,6 @@ int main()
     }
     sort(v.begin(), v.end(), compareArea);
 
-    // 판단 실시
-    if (n < 3)
-    {
-        if (compareLength(v[0],v[1]))
-        {
-            cout << "2" << endl;
-            return 0;
-        }
-        
-    }
-
-    else
-    {
-        for (int i = 0; i < n-2; i++)
-        {   
-            for (int j = i+1; j < n-1; j++)
-            {
-                before = i;
-                if(compareLength(v[before],v[j]))
-                {   
-                    if(count == 0) count++;
-                    before = j;
-                    ++count;
-
-                    for (int k = j+1; k < n; k++)
-                    {
-                        if (compareLength(v[before],v[k]))
-                        {
-                            before = k;
-                            ++count;   
-                        }
-                    } 
-                }
-                max = (max < count) ? count:max;
-                count = 0;
-            }
-         }
-    }
-
-    cout << max << endl;
-    
     return 0;
 }
     
