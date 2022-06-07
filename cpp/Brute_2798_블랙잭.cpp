@@ -30,7 +30,5 @@ int main()
         }      
     }
     cout << m-result << endl;
-
-
     return 0;
 }
