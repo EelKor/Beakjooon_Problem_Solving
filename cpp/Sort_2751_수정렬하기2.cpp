@@ -16,7 +16,6 @@ int main()
     cin >> n;
 
     num = new int[n];
-    
 
     for (int i = 0; i < n; i++)
     {
@@ -28,6 +27,5 @@ int main()
     {
         cout << *(num+i) << "\n";
     }
-
     return 0;
 }
