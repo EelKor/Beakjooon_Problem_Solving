@@ -1,0 +1,34 @@
+import sys
+
+end_year = int(sys.stdin.readline().strip())
+# 2019, 1,4 Friday
+date_friday = 4
+count = 0
+
+for year in range(2019, end_year+1):
+    if year % 400 == 0 or not(year % 400 != 0 and year % 100 == 0) or (year % 100 != 0 and year % 4 == 0): # 윤년
+        month = [31,29,31,30,31,30,31,31,30,31,30,31]
+        pivot = 0
+        for i in range(1, 52):
+            if date_friday > month[pivot]:
+                date_friday -= month[pivot]
+                pivot += 1
+            else:
+                date_friday += 7
+            if date_friday == 13: count += 1
+        print("yoon",year)
+    else: # 일반년도
+        month = [31,28,31,30,31,30,31,31,30,31,30,31]
+        pivot = 0
+        for i in range(1,52):
+            if date_friday > month[pivot]:
+                date_friday -= month[pivot]
+                pivot += 1
+
+            else:
+                date_friday += 7
+
+            if date_friday == 13: count += 1
+
+print(count)
+
